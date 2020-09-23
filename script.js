@@ -15,7 +15,7 @@ function writePassword() {
   );
   if (characterAmount < 8 || characterAmount > 128) {
     alert("Number of characters needs to be between 8 and 128");
-    writePassword();
+    return writePassword();
   }
   var includeUppercase = confirm(
     "Would you like to include uppercase in your password?"
