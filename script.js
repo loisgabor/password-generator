@@ -1,4 +1,4 @@
-// Assignment Code
+// Defining the variables
 const symbols = "!#$%&()*+,-./:;<=>?@[]^_`{|}~";
 var lower = "abcsdefghijklmnopqrstuvwxyz";
 var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -8,7 +8,7 @@ var password = "";
 var generateBtn = document.querySelector("#generate");
 var passwordText = document.querySelector("#password");
 
-// Write password to the #password input
+// User input prompts
 function writePassword() {
   characterAmount = prompt(
     "Select the number of characters desired for your password (between 8 and 128)"
@@ -40,6 +40,8 @@ function writePassword() {
     );
     writePassword();
   }
+
+  // Password Generator section
   if (includeUppercase) {
     possibleCharacters += upper;
   }
@@ -61,5 +63,3 @@ function writePassword() {
 
 // Generate event listener
 generateBtn.addEventListener("click", writePassword);
-
-// // Generator functions
