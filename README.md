@@ -8,22 +8,11 @@ I did this by creating string variables for all the different options one can ch
 
 The, using Math.floor and Math.random, the function would generate a random password using the parameters that the user selected.
 
-## Installation
-
-What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.
-
 ## Usage
 
-Provide instructions and examples for use. Include screenshots as needed.
-![screenshot](.images/image1.png)
+In order to randomly generate password, user must click the 'generate password' button to initialize the series of prompt and confirms. Follow prompts as directed and then you will receive your generated password.
 
-## Credits
-
-List your collaborators, if any, with links to their GitHub profiles.
-
-If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.
-
-If you followed tutorials, include links to those here as well.
+![screenshot](/images/image1.png)
 
 # License
 
