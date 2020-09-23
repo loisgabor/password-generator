@@ -1,11 +1,22 @@
 // Assignment Code
+const symbols = "!#$%&()*+,-./:;<=>?@[]^_`{|}~";
+var lower = "abcsdefghijklmnopqrstuvwxyz";
+var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var number = "1234567890";
+var possibleCharacters = "";
+var password = "";
 var generateBtn = document.querySelector("#generate");
+var passwordText = document.querySelector("#password");
 
-// // Write password to the #password input
+// Write password to the #password input
 function writePassword() {
-  var characterAmount = prompt(
+  characterAmount = prompt(
     "Select the number of characters desired for your password (between 8 and 128)"
   );
+  if (characterAmount < 8 || characterAmount > 128) {
+    alert("Number of characters needs to be between 8 and 128");
+    writePassword();
+  }
   var includeUppercase = confirm(
     "Would you like to include uppercase in your password?"
   );
@@ -18,50 +29,37 @@ function writePassword() {
   var includeSymbols = confirm(
     "Would you like to include symbols in your password?"
   );
-  console.log(characterAmount);
+  if (
+    includeUppercase === false &&
+    includeLowercase === false &&
+    includeNumbers === false &&
+    includeSymbols === false
+  ) {
+    alert(
+      "Cannot generate password. Please select possible characters to generate password"
+    );
+    writePassword();
+  }
+  if (includeUppercase) {
+    possibleCharacters += upper;
+  }
+  if (includeLowercase) {
+    possibleCharacters += lower;
+  }
+  if (includeNumbers) {
+    possibleCharacters += number;
+  }
+  if (includeSymbols) {
+    possibleCharacters += symbols;
+  }
+  for (var i = 0; i < characterAmount; i++) {
+    password +=
+      possibleCharacters[Math.floor(Math.random() * possibleCharacters.length)];
+  }
+  passwordText.value = password;
 }
 
-// DOM elements
-
-// const randomFunc = {
-//   lower: getRandomLower,
-//   upper: getRandomUpper,
-//   number: getRandomNumber,
-//   symbol: getRandomNumber,
-// };
-
-// function generatePassword(lower, upper, number, symbol, length) {}
-
-// const typeCount = lower + upper + number + symbol;
-
-//   var password = generatePassword(
-//     characterAmount,
-//     includeUppercase,
-//     includeLowercase,
-//     includeNumbers,
-//     includeSymbols
-//   );
-var passwordText = document.querySelector("#password");
-
-passwordText.value = password;
-
-// Add event listener to generate button
+// Generate event listener
 generateBtn.addEventListener("click", writePassword);
 
 // // Generator functions
-function getRandomLower() {
-  return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
-}
-
-function getRandomUpper() {
-  return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
-}
-
-function getRandomNumber() {
-  return String.fromCharCode(Math.floor(Math.random() * 10) + 48);
-}
-
-function getRandomSymbol() {
-  const symbols = "!#$%&()*+,-./:;<=>?@[]^_`{|}~";
-  return symbols[Math.floor(Math.random() * symbols.length)];
-}
